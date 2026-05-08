@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puding Buah Pontianak</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      overflow-x:hidden;
+      background:#fffaf5;
+      color:#222;
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav{
+      max-width:1200px;
+      margin:auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo-area{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .logo-text h2{
+      color:#ff8c00;
+      font-size:24px;
+    }
+
+    .logo-text span{
+      color:#777;
+      font-size:14px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#333;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#ff8c00;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:140px 20px 80px;
+      background:linear-gradient(to right,#fff3e0,#fffaf5);
+    }
+
+    .hero-container{
+      max-width:1200px;
+      margin:auto;
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text span{
+      color:#ff8c00;
+    }
+
+    .hero-text p{
+      color:#666;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:15px;
+    }
+
+    .highlight{
+      color:#ff8c00 !important;
+      font-weight:bold;
+      font-size:20px !important;
+    }
+
+    .hero-info{
+      margin:30px 0;
+    }
+
+    .btn-group{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-top:25px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 30px;
+      border-radius:16px;
+      background:#ff8c00;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(255,140,0,0.25);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#e67600;
+    }
+
+    .hero-social{
+      display:flex;
+      gap:18px;
+      margin-top:35px;
+    }
+
+    .hero-social a{
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      color:white;
+      font-size:24px;
+      transition:0.35s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .hero-social a:nth-child(1){
+      background:linear-gradient(135deg,#ff0069,#ff7a00);
+    }
+
+    .hero-social a:nth-child(2){
+      background:linear-gradient(135deg,#00c853,#00e676);
+    }
+
+    .hero-social a:nth-child(3){
+      background:linear-gradient(135deg,#1877f2,#42a5f5);
+    }
+
+    .hero-social a:hover{
+      transform:translateY(-8px) scale(1.08);
+    }
+
+    .hero-image img{
+      width:100%;
+      height:520px;
+      object-fit:contain;
+      background:white;
+      border-radius:35px;
+      padding:20px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    section{
+      padding:100px 20px;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:48px;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#777;
+    }
+
+    .produk-grid{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .card{
+      position:relative;
+      background:white;
+      border-radius:30px;
+      padding:20px;
+      display:grid;
+      grid-template-columns:300px 1fr;
+      gap:30px;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+    }
+
+    .badge{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:#ff0069;
+      color:white;
+      padding:8px 16px;
+      border-radius:30px;
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    .card img{
+      width:100%;
+      height:260px;
+      object-fit:contain;
+      background:linear-gradient(to bottom,#fff,#fff7f0);
+      border-radius:25px;
+      padding:15px;
+    }
+
+    .card-content h3{
+      font-size:32px;
+      margin-bottom:15px;
+    }
+
+    .card-content p{
+      font-size:17px;
+      line-height:1.8;
+      color:#666;
+      margin-bottom:20px;
+    }
+
+    .price{
+      color:#ff8c00;
+      font-size:28px;
+      font-weight:bold;
+      margin-bottom:25px;
+    }
+
+    .gallery{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      padding-bottom:15px;
+    }
+
+    .gallery img{
+      width:320px;
+      height:420px;
+      object-fit:cover;
+      border-radius:25px;
+      flex-shrink:0;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    .lightbox{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.9);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:20px;
+    }
+
+    .map-container{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    iframe{
+      width:100%;
+      height:450px;
+      border:none;
+      border-radius:30px;
+    }
+
+    .info p{
+      margin-bottom:20px;
+      font-size:18px;
+      color:#555;
+    }
+
+    footer{
+      background:#1f1f1f;
+      color:white;
+      text-align:center;
+      padding:50px 20px;
+    }
+
+    @media(max-width:900px){
+
+      nav ul{
+        display:none;
+      }
+
+      .hero-container,
+      .map-container,
+      .card{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:130px;
+      }
+
+      .hero-text{
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      .hero-image img{
+        height:340px;
+      }
+
+      .btn-group{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+        text-align:center;
+      }
+
+      .hero-social{
+        justify-content:center;
+      }
+
+      .card{
+        text-align:center;
+      }
+
+      .card img{
+        height:220px;
+      }
+
+      .card-content .btn{
+        width:100%;
+      }
+
+      .title h2{
+        font-size:36px;
+      }
+
+      iframe{
+        height:300px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+
+      <div class="logo-area">
+        <img src="logo.png" class="logo">
+
+        <div class="logo-text">
+          <h2>Puding Buah</h2>
+          <span>Pontianak</span>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+
+    <div class="hero-container">
+
+      <div class="hero-text">
+
+        <h1>
+          Puding <span>Buah</span> Pontianak
+        </h1>
+
+        <p>
+          Dessert segar dengan topping buah melimpah,
+          cocok untuk berbagai acara spesial.
+        </p>
+
+        <div class="hero-info">
+          <p>🎁 Hampers</p>
+          <p>🎂 Puding ulang tahun</p>
+          <p>🏡 Hidangan tamu di rumah</p>
+          <p>👨‍👩‍👧‍👦 Kumpul keluarga & acara kantor</p>
+
+          <p class="highlight">
+            Segar, cantik, dan bikin tamu ketagihan!
+          </p>
+
+          <p>🚚 Home Delivery Available</p>
+        </div>
+
+        <div class="btn-group">
+
+          <a
+href="https://wa.me/6289670972892?text=Halo%20Puding%20Buah%20Pontianak%20%F0%9F%91%8B%0A%0ASaya%20ingin%20melakukan%20pemesanan%3A%0A%0A%F0%9F%93%8C%20Nama%3A%0A%F0%9F%93%8C%20Alamat%3A%0A%F0%9F%93%8C%20Produk%20yang%20dipesan%3A%0A%F0%9F%93%8C%20Jumlah%3A%0A%F0%9F%93%8C%20Tanggal%20pengiriman%3A%0A%F0%9F%93%8C%20Request%20tulisan%2Fdekorasi%3A%0A%F0%9F%93%8C%20Metode%20pembayaran%3A%0A%0ATerima%20kasih%20%F0%9F%98%8A"
+target="_blank"
+class="btn"
+>
+Order WhatsApp
+</a>
+
+          <a href="#galeri" class="btn">
+            Lihat Galeri
+          </a>
+
+        </div>
+
+        <div class="hero-social">
+
+          <a href="https://www.instagram.com/puddingbuah_ptk/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="https://wa.me/6282147314910" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+
+          <a href="https://www.facebook.com/puddingbuahptk" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+        <img src="foto1.png">
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="produk">
+
+    <div class="title">
+      <h2>Menu Favorit</h2>
+      <p>Puding premium dengan tampilan cantik dan rasa lezat.</p>
+    </div>
+
+    <div class="produk-grid">
+
+      <div class="card">
+
+        <img src="pudinghbd.png">
+
+        <div class="card-content">
+          <h3>Puding Buah Pontianak</h3>
+
+          <p>
+            Puding lembut dengan buah segar pilihan premium.
+            Cocok untuk hampers dan acara spesial.
+          </p>
+
+          <div class="price"></div>
+
+          <a
+            href="https://wa.me/6282147314910"
+            target="_blank"
+            class="btn"
+          >
+            Pesan
+          </a>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="badge">
+          CUSTOM
+        </div>
+
+        <img src="pudingcutom.png">
+
+        <div class="card-content">
+          <h3>Birthday Cake By Request</h3>
+
+          <p>
+            Custom birthday cake sesuai request.
+            Bisa pilih tema, warna, karakter,
+            dan ucapan spesial.
+          </p>
+
+          <div class="price"></div>
+
+          <a
+            href="https://wa.me/6282147314910"
+            target="_blank"
+            class="btn"
+          >
+            Order Custom Cake
+          </a>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="pudingcup9.png">
+
+        <div class="card-content">
+          <h3>Puding Cup</h3>
+
+          <p>
+            Praktis dan cocok untuk keluarga,
+            arisan, acara kantor dan meeting.
+          </p>
+
+          <div class="price"></div>
+
+          <a
+            href="https://wa.me/6282147314910"
+            target="_blank"
+            class="btn"
+          >
+            Pesan
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="galeri">
+
+    <div class="title">
+      <h2>Galeri Produk</h2>
+      <p>Geser galeri dan klik gambar untuk memperbesar.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="foto2.png" onclick="openLightbox(this)">
+      <img src="foto3.png" onclick="openLightbox(this)">
+      <img src="foto4.png" onclick="openLightbox(this)">
+      <img src="foto5.png" onclick="openLightbox(this)">
+      <img src="foto6.png" onclick="openLightbox(this)">
+      <img src="foto7.png" onclick="openLightbox(this)">
+      <img src="foto8.png" onclick="openLightbox(this)">
+      <img src="foto9.png" onclick="openLightbox(this)">
+      <img src="foto10.png" onclick="openLightbox(this)">
+      <img src="foto11.png" onclick="openLightbox(this)">
+      <img src="pudingcup6.png" onclick="openLightbox(this)">
+      <img src="pudingcup4.png" onclick="openLightbox(this)">
+      <img src="pudingcup9.png" onclick="openLightbox(this)">
+    </div>
+
+  </section>
+
+  <section id="lokasi">
+
+    <div class="title">
+      <h2>Lokasi Kami</h2>
+      <p>Siap melayani area Pontianak dan sekitarnya.</p>
+    </div>
+
+    <div class="map-container">
+
+      <div class="info">
+
+        <p>📍 Pontianak, Kalimantan Barat</p>
+        <p>📞 0896-7097-2892</p>
+        <p>⏰ Buka setiap hari 08:00 - 21:00</p>
+
+        <a
+          href="https://wa.me/6282147314910"
+          target="_blank"
+          class="btn"
+        >
+          Order Sekarang
+        </a>
+
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps?q=Pontianak&output=embed">
+      </iframe>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <h3>Puding Buah Pontianak</h3>
+
+    <p style="margin-top:15px;color:#bbb;">
+      Homemade Dessert • Fresh • Elegant
+    </p>
+
+    <p style="margin-top:20px;color:#888;">
+      © 2026 All Rights Reserved
+    </p>
+
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+  </div>
+
+  <script>
+
+    function openLightbox(img){
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = img.src;
+    }
+
+    function closeLightbox(){
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+  </script>
+
+</body>
+</html>
