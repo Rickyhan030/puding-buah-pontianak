@@ -501,6 +501,23 @@ Logout
 </div>
 
 </div>
+<script type="module">
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB0ws3Zc67_ZLd5Ou0kvziy0JektTm4kyc",
+  authDomain: "puding-buah-pontianak.firebaseapp.com",
+  projectId: "puding-buah-pontianak",
+  storageBucket: "puding-buah-pontianak.firebasestorage.app",
+  messagingSenderId: "885516061090",
+  appId: "1:885516061090:web:22a023fc8b5572b5634afb"
+};
+
+const app = initializeApp(firebaseConfig);
+
+console.log("Firebase Connected");
+
+</script>
 </body>
 </html>
