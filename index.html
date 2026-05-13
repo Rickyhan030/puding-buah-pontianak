@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Puding Buah Pontianak</title>
-
+  <meta name="description"
+content="Puding Buah Pontianak menyediakan dessert premium, hampers, birthday cake dan puding ulang tahun dengan tampilan cantik dan rasa lezat.">
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -416,6 +417,50 @@
 
     }
 
+    .floating-wa{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#25d366;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  text-decoration:none;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  z-index:9999;
+  animation:waFloat 2s infinite;
+}
+
+@keyframes waFloat{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0);}
+}
+
+.card,
+.hero-image,
+.hero-text,
+.gallery img{
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -505,7 +550,7 @@ Order WhatsApp
       </div>
 
       <div class="hero-image">
-        <img src="foto1.png">
+        <img src="foto1.png" loading="lazy">
       </div>
 
     </div>
@@ -694,5 +739,10 @@ Order WhatsApp
 
   </script>
 
+<a href="https://wa.me/6289670972892"
+class="floating-wa"
+target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
 </body>
 </html>
