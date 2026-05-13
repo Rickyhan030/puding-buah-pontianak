@@ -90,14 +90,14 @@ body{
   font-size:38px;
 }
 
-  function logout(){
-  location.reload();
-}
 .topbar p{
   color:#777;
   margin-top:8px;
 }
-
+  
+function logout(){
+  location.reload();
+}
 .admin-box{
   background:white;
   padding:16px 22px;
@@ -361,6 +361,10 @@ if(password !== "mxrcjogja"){
 
 <div class="topbar">
 
+<button onclick="logout()" class="logout-btn">
+Logout
+</button>
+  
 <div>
   <h1>Dashboard Admin</h1>
   <p>Kelola galeri, produk dan harga Puding Buah Pontianak</p>
