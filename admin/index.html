@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Admin - Puding Buah Pontianak</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#fff7f0;
+  display:flex;
+  min-height:100vh;
+  color:#222;
+}
+
+.sidebar{
+  width:280px;
+  background:#ff8c00;
+  color:white;
+  padding:30px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:45px;
+}
+
+.logo img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.logo h2{
+  font-size:24px;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.menu a{
+  padding:16px 18px;
+  border-radius:18px;
+  color:white;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  transition:0.3s;
+  font-weight:bold;
+}
+
+.menu a:hover,
+.menu a.active{
+  background:rgba(255,255,255,0.18);
+}
+
+.main{
+  margin-left:280px;
+  width:100%;
+  padding:35px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:35px;
+}
+
+.topbar h1{
+  font-size:38px;
+}
+
+.topbar p{
+  color:#777;
+  margin-top:8px;
+}
+
+.admin-box{
+  background:white;
+  padding:16px 22px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-bottom:35px;
+}
+
+.stat-card{
+  background:white;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.stat-card i{
+  width:65px;
+  height:65px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff3e0;
+  color:#ff8c00;
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.stat-card h2{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.stat-card p{
+  color:#777;
+}
+
+.content-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.card{
+  background:white;
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card h2{
+  margin-bottom:25px;
+}
+
+.input-group{
+  margin-bottom:20px;
+}
+
+.input-group label{
+  display:block;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+.input-group input,
+.input-group textarea{
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:15px;
+}
+
+.input-group textarea{
+  min-height:120px;
+  resize:none;
+}
+
+.upload-box{
+  border:2px dashed #ffbe73;
+  border-radius:22px;
+  padding:35px;
+  text-align:center;
+  background:#fffaf5;
+}
+
+.upload-box i{
+  font-size:50px;
+  color:#ff8c00;
+  margin-bottom:15px;
+}
+
+.btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:#ff8c00;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#e67600;
+  transform:translateY(-3px);
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.gallery-item{
+  background:#fffaf5;
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.gallery-item img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.gallery-info{
+  padding:16px;
+}
+
+.gallery-info h4{
+  margin-bottom:6px;
+}
+
+.gallery-info p{
+  color:#ff8c00;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.action-btns{
+  display:flex;
+  gap:10px;
+}
+
+.small-btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.edit{
+  background:#fff3e0;
+  color:#ff8c00;
+}
+
+.delete{
+  background:#ffe5e5;
+  color:#ff4d4d;
+}
+
+@media(max-width:1000px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    position:relative;
+    border-radius:0 0 30px 30px;
+  }
+
+  .main{
+    margin-left:0;
+    padding:25px 18px;
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+  <img src="logo.png">
+
+  <div>
+    <h2>Puding Buah</h2>
+    <span>Admin Dashboard</span>
+  </div>
+</div>
+
+<div class="menu">
+  <a href="#" class="active">
+    <i class="fas fa-chart-pie"></i>
+    Dashboard
+  </a>
+
+  <a href="#">
+    <i class="fas fa-image"></i>
+    Kelola Galeri
+  </a>
+
+  <a href="#">
+    <i class="fas fa-birthday-cake"></i>
+    Produk & Harga
+  </a>
+
+  <a href="#">
+    <i class="fas fa-shopping-cart"></i>
+    Pesanan
+  </a>
+
+  <a href="#">
+    <i class="fas fa-cog"></i>
+    Pengaturan
+  </a>
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div>
+  <h1>Dashboard Admin</h1>
+  <p>Kelola galeri, produk dan harga Puding Buah Pontianak</p>
+</div>
+
+<div class="admin-box">
+  👋 Admin Online
+</div>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+  <i class="fas fa-images"></i>
+  <h2>28</h2>
+  <p>Total Foto Galeri</p>
+</div>
+
+<div class="stat-card">
+  <i class="fas fa-cake-candles"></i>
+  <h2>12</h2>
+  <p>Total Produk</p>
+</div>
+
+<div class="stat-card">
+  <i class="fas fa-shopping-bag"></i>
+  <h2>84</h2>
+  <p>Total Pesanan</p>
+</div>
+
+</div>
+
+<div class="content-grid">
+
+<div class="card">
+
+<h2>Upload Produk Baru</h2>
+
+<div class="input-group">
+  <label>Nama Produk</label>
+  <input type="text" placeholder="Contoh: Puding Buah Premium">
+</div>
+
+<div class="input-group">
+  <label>Harga Produk</label>
+  <input type="text" placeholder="Contoh: Rp45.000">
+</div>
+
+<div class="input-group">
+  <label>Deskripsi</label>
+  <textarea placeholder="Deskripsi produk..."></textarea>
+</div>
+
+<div class="input-group">
+  <label>Upload Foto</label>
+
+  <div class="upload-box">
+    <i class="fas fa-cloud-upload-alt"></i>
+    <p>Klik untuk upload foto produk</p>
+    <br>
+    <input type="file">
+  </div>
+</div>
+
+<button class="btn">
+   Simpan Produk
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Galeri Produk</h2>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+  <img src="foto2.png">
+
+  <div class="gallery-info">
+    <h4>Puding Premium</h4>
+    <p>Rp45.000</p>
+
+    <div class="action-btns">
+      <button class="small-btn edit">Edit</button>
+      <button class="small-btn delete">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item">
+  <img src="foto3.png">
+
+  <div class="gallery-info">
+    <h4>Birthday Cake</h4>
+    <p>Rp150.000</p>
+
+    <div class="action-btns">
+      <button class="small-btn edit">Edit</button>
+      <button class="small-btn delete">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item">
+  <img src="foto4.png">
+
+  <div class="gallery-info">
+    <h4>Puding Cup</h4>
+    <p>Rp8.000</p>
+
+    <div class="action-btns">
+      <button class="small-btn edit">Edit</button>
+      <button class="small-btn delete">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item">
+  <img src="foto5.png">
+
+  <div class="gallery-info">
+    <h4>Custom Cake</h4>
+    <p>Rp250.000</p>
+
+    <div class="action-btns">
+      <button class="small-btn edit">Edit</button>
+      <button class="small-btn delete">Hapus</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
