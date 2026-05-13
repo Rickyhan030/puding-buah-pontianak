@@ -505,6 +505,13 @@ Logout
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyB0ws3Zc67_ZLd5Ou0kvziy0JektTm4kyc",
   authDomain: "puding-buah-pontianak.firebaseapp.com",
@@ -515,6 +522,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
 
 console.log("Firebase Connected");
 
