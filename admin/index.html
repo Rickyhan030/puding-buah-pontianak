@@ -299,7 +299,21 @@ body{
 </style>
 </head>
 <body>
+  
+<script>
 
+const password = prompt("Masukkan Password Admin");
+
+if(password !== "mxrcjoga"){
+  alert("Password Salah!");
+  window.location.href = "/";
+}
+
+</script>
+
+  function logout(){
+  location.reload();
+}
 <div class="sidebar">
 
 <div class="logo">
@@ -343,7 +357,9 @@ body{
 <div class="main">
 
 <div class="topbar">
-
+<button onclick="logout()" class="logout-btn">
+Logout
+</button>
 <div>
   <h1>Dashboard Admin</h1>
   <p>Kelola galeri, produk dan harga Puding Buah Pontianak</p>
