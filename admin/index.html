@@ -95,9 +95,6 @@ body{
   margin-top:8px;
 }
   
-function logout(){
-  location.reload();
-}
 .admin-box{
   background:white;
   padding:16px 22px;
@@ -299,6 +296,9 @@ function logout(){
   }
 
 }
+    function logout(){
+  location.reload();
+}
 </style>
 </head>
 <body>
@@ -314,9 +314,6 @@ if(password !== "mxrcjogja"){
 
 </script>
 
-  function logout(){
-  location.reload();
-}
 <div class="sidebar">
 
 <div class="logo">
@@ -353,6 +350,9 @@ if(password !== "mxrcjogja"){
     <i class="fas fa-cog"></i>
     Pengaturan
   </a>
+  <button onclick="logout()" class="logout-btn">
+Logout
+</button>
 </div>
 
 </div>
@@ -360,10 +360,6 @@ if(password !== "mxrcjogja"){
 <div class="main">
 
 <div class="topbar">
-
-<button onclick="logout()" class="logout-btn">
-Logout
-</button>
   
 <div>
   <h1>Dashboard Admin</h1>
